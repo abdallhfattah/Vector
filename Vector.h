@@ -9,15 +9,14 @@ template <class T>
 class XYVector{
 private:
     int size,capacity;
-    T *data;
+    typedef T* Iterator;
+    Iterator *data;
 public:
     XYVector();
     explicit XYVector (int size);
     XYVector(const XYVector & vec);
     ~XYVector();
-    XYVector (T* arr, int  n );    // Initialize by n items from arr
-
-
+    XYVector (T* arr, int  n );
 
     // operators
     XYVector & operator =(XYVector && move) noexcept ;
@@ -30,6 +29,7 @@ public:
 
 
     //iterators
+    Iterator begin();
 
     // methods
     void push_back(T element);
@@ -41,7 +41,7 @@ public:
     void clear();     // Delete all vector content
 
     // friend
-    friend std::ostream & operator << (std:: ostream& out, XYVector<T>);
+    // friend std::ostream & operator << (std:: ostream& out, XYVector<T>);
 
 };
 
@@ -69,9 +69,9 @@ XYVector<T>:: XYVector(int size) {
     this->size = size;
     capacity = size;
     data = new T[capacity];
-    T inializer{};
+    T inti{};
     for (int i = 0; i < capacity; ++i) {
-        data[i] =  inializer;
+        data[i] =  inti;
     }
 }
 
@@ -159,6 +159,13 @@ template<class T>
 bool XYVector<T>::operator >(const XYVector<T> &vec) {
     return !XYVector<T>::operator<(&vec);
 }
+
+
+template<class T>
+XYVector::Iterator XYVector<T>::begin() {
+    return &data[0];
+}
+
 
 // push back elements
 template<class T>
@@ -254,7 +261,10 @@ XYVector &operator=(const Vector&&);         D            // Move assignment
 // Modifying operations
 int push_back(T)                             D            // Add item to end of vec & return # of items
                                                             // Increase capacity of needed
-
+// Comparison operations
+bool operator==(const XYVector<T>&)      // Return true if ==
+bool operator< (const XYVector<T>&)     // Compares item by item
+                                        // Return true if first
 ================================================================================
 void erase(iterator)                                // Remove item at iterator
                                                     // Throw exception if invalid iter
@@ -267,10 +277,7 @@ void insert(iterator, T)                            // Insert item at iterator
 // apply STL algorithms on XYVector
 iterator begin()	// Return an iterator (T*)
 
-// Comparison operations
-bool operator==(const XYVector<T>&)      // Return true if ==
-bool operator< (const XYVector<T>&)     // Compares item by item
-                                        // Return true if first different item in this is < in other
+ different item in this is < in other
 // Friends
 friend ostream& operator << (ostream& out, vector<T>)
 ===============================================================================
