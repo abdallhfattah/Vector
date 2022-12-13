@@ -6,5 +6,5 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 
 add_executable(Vector
-        mian.cpp
+        main.cpp
         Vector.h)
