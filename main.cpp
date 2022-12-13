@@ -43,12 +43,14 @@ int main(){
     } else
         cout << "False";*/
     XYVector<int> v;
+    v.push_back(6);
     v.push_back(0);
+    v.push_back(6);
     v.push_back(6);
     v.push_back(7);
     v.push_back(8);
     auto itr  = v.begin() + 1;
-    cout << * itr << endl << itr << endl;
+    // cout << * itr << endl << itr << endl;
     v.erase(itr);
     for (int i = 0; i < v.get_size(); ++i) {
         cout << v[i] << endl;
