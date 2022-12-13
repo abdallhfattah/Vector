@@ -16,9 +16,6 @@ public:
     XYVector(const XYVector & vec);
     ~XYVector();
     XYVector (T* arr, int  n );    // Initialize by n items from arr
-    bool operator==(const XYVector<T>& vec);      // Return true if ==
-    bool operator< (const XYVector<T>& vec);     // Compares item by item
-    // Return true if first different item in this is < in other
 
 
 
@@ -26,6 +23,11 @@ public:
     XYVector & operator =(XYVector && move) noexcept ;
     T & operator[](int element);
     XYVector & operator=(const XYVector & copy);
+    bool operator==(const XYVector<T>& vec);      // Return true if ==
+    bool operator< (const XYVector<T>& vec);
+    bool operator> (const XYVector<T>& vec);// Compares item by item
+    // Return true if first different item in this is < in other
+
 
     //iterators
 
@@ -145,12 +147,17 @@ bool XYVector<T>::operator==(const XYVector<T> & vec) {
 
 template<class T>
 bool XYVector<T>::operator < (const XYVector<T> &vec) {
-    for (int i = 0; i < min(this->size , vec.size); ++i) {
+    for (int i = 0; i < std::min(this->size , vec.size); ++i) {
         if(this->data[i] < vec.data[i]){
             return true;
         }
     }
     return false;
+}
+
+template<class T>
+bool XYVector<T>::operator >(const XYVector<T> &vec) {
+    return !XYVector<T>::operator<(&vec);
 }
 
 // push back elements
