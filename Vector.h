@@ -37,13 +37,14 @@ public:
 
     // methods
     void push_back(T element);
+    void pop_back();
     void print();
     bool empty();
     int resize();
     int get_size() const;     // Return current size of vec
     int get_capacity() const; // Return size of current allocated
     void clear();     // Delete all vector content
-
+    void erase(Iterator);
     // friend
     // friend std::ostream & operator << (std:: ostream& out, XYVector<T>);
 
@@ -164,7 +165,7 @@ bool XYVector<T>::operator >(const XYVector<T> &vec) {
     return !XYVector<T>::operator<(&vec);
 }
 
-
+// Iterators
 template<class T>
 typename XYVector<T>::Iterator XYVector<T>::begin() {
     return &data[0];
@@ -175,7 +176,16 @@ typename XYVector<T>::Iterator XYVector<T>::end() {
     return &data[size - 1];
 }
 
-// push back elements
+template<class T>
+void XYVector<T>::erase(T* m) {
+    * (m) = NULL;
+}
+
+
+
+
+
+// methods
 template<class T>
 void XYVector<T>::push_back(T element)
 {
@@ -195,6 +205,14 @@ void XYVector<T>::push_back(T element)
     // Inserting the element
     data[size++] = element;
 }
+
+
+template<class T>
+void XYVector<T>::pop_back() {
+    this->data[size - 1] = NULL;
+    --size;
+}
+
 
 template<class T>
 bool XYVector<T>::empty(){
@@ -235,12 +253,10 @@ int XYVector<T>::get_capacity() const {
 template<class T>
 void XYVector<T>::clear(){
     this->size = 0;
-    // inializing the vector
-    T inializer{};
+    // initializing the vector
     for (int i = 0; i < capacity; ++i) {
-        data[i] = inializer;
+        data[i] = NULL;
     }
-
 }
 
 
@@ -272,7 +288,7 @@ int push_back(T)                             D            // Add item to end of 
 // Comparison operations
 bool operator==(const XYVector<T>&)      // Return true if ==
 bool operator< (const XYVector<T>&)     // Compares item by item
-                                        // Return true if first
+                                        // Return true if first different item in this is < in other
 ================================================================================
 void erase(iterator)                                // Remove item at iterator
                                                     // Throw exception if invalid iter
@@ -285,7 +301,7 @@ void insert(iterator, T)                            // Insert item at iterator
 // apply STL algorithms on XYVector
 iterator begin()	D // Return an iterator (T*)
 
- different item in this is < in other
+
 // Friends
 friend ostream& operator << (ostream& out, vector<T>)
 ===============================================================================

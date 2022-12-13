@@ -29,13 +29,29 @@ int main(){
     for (int i = 0; i < vec.get_size(); ++i) {
         cout << vec[i] << endl;
     }*/
-    XYVector<int>v(5);
-    int * itr = v.begin();
+
+    /*XYVector<int>v(5);
+    int * itr = v.begin() + 1;
     XYVector<int>v2;
     cout << *itr << endl;
     v2.push_back(5);
-    if(v < v2){
+    v2.push_back(6);
+    itr = v2.begin();
+    cout << *itr << endl;
+        if(v < v2){
         cout << "TRUE";
     } else
-        cout << "False";
+        cout << "False";*/
+    XYVector<int> v;
+    v.push_back(0);
+    v.push_back(6);
+    v.push_back(7);
+    v.push_back(8);
+    auto itr  = v.begin() + 1;
+    cout << * itr << endl << itr << endl;
+    v.erase(itr);
+    for (int i = 0; i < v.get_size(); ++i) {
+        cout << v[i] << endl;
+    }
+
 }
