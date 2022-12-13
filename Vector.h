@@ -10,13 +10,13 @@ class XYVector{
 private:
     int size,capacity;
     typedef T* Iterator;
-    Iterator *data;
+    Iterator data;
 public:
     XYVector();
     explicit XYVector (int size);
     XYVector(const XYVector & vec);
     ~XYVector();
-    XYVector (T* arr, int  n );
+    XYVector (Iterator arr, int  n );
 
     // operators
     XYVector & operator =(XYVector && move) noexcept ;
@@ -30,6 +30,10 @@ public:
 
     //iterators
     Iterator begin();
+    Iterator end();
+
+    //iterators operators
+
 
     // methods
     void push_back(T element);
@@ -77,7 +81,7 @@ XYVector<T>:: XYVector(int size) {
 
 
 template<class T>
-XYVector<T>::XYVector(T * _arr, int n) : size{n}, capacity(n) , data{new T [n]}{
+XYVector<T>::XYVector(Iterator _arr, int n) : size{n}, capacity(n) , data{new T [n]}{
     for(int i = 0; i < size; i++){
         data[i] = _arr[i];
     }
@@ -162,10 +166,14 @@ bool XYVector<T>::operator >(const XYVector<T> &vec) {
 
 
 template<class T>
-XYVector::Iterator XYVector<T>::begin() {
+typename XYVector<T>::Iterator XYVector<T>::begin() {
     return &data[0];
 }
 
+template<class T>
+typename XYVector<T>::Iterator XYVector<T>::end() {
+    return &data[size - 1];
+}
 
 // push back elements
 template<class T>
@@ -174,7 +182,7 @@ void XYVector<T>::push_back(T element)
     // if the number of elements is equal to the capacity, that means we don't have space to accommodate more elements
     // We need to double the capacity
     if(size == capacity){
-        T *temp  = new T [capacity * 2];
+        Iterator temp  = new T [capacity * 2];
         // copying old array elements to new array
         for(int i = 0; i < capacity; i++){
             temp[i] =  data[i];
@@ -196,7 +204,7 @@ bool XYVector<T>::empty(){
 
 template<class T>
 int XYVector<T>::resize(){
-    T *temp  = new T [capacity * 2];
+    Iterator temp  = new T [capacity * 2];
     // copying old array elements to new array
     for(int i = 0; i < capacity; i++){
         temp[i] =  data[i];
@@ -275,7 +283,7 @@ void insert(iterator, T)                            // Insert item at iterator
 // Can use: typedef T* iterator
 // Or u can use std::iterator, so you can
 // apply STL algorithms on XYVector
-iterator begin()	// Return an iterator (T*)
+iterator begin()	D // Return an iterator (T*)
 
  different item in this is < in other
 // Friends

@@ -30,7 +30,9 @@ int main(){
         cout << vec[i] << endl;
     }*/
     XYVector<int>v(5);
+    int * itr = v.begin();
     XYVector<int>v2;
+    cout << *itr << endl;
     v2.push_back(5);
     if(v < v2){
         cout << "TRUE";
