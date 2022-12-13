@@ -16,6 +16,10 @@ public:
     XYVector(const XYVector & vec);
     ~XYVector();
     XYVector (T* arr, int  n );    // Initialize by n items from arr
+    bool operator==(const XYVector<T>& vec);      // Return true if ==
+    bool operator< (const XYVector<T>& vec);     // Compares item by item
+    // Return true if first different item in this is < in other
+
 
 
     // operators
@@ -127,6 +131,27 @@ XYVector<T> & XYVector<T>:: operator = (XYVector && move) noexcept{
     move.capacity = 0;
 }
 
+template<class T>
+bool XYVector<T>::operator==(const XYVector<T> & vec) {
+    int _local_size = vec.size;
+    if(this->size != _local_size) return false;
+    else {
+        for (int i = 0; i < _local_size; ++i) {
+            if(this[i] != vec[i]) return false;
+        }
+        return true;
+    }
+}
+
+template<class T>
+bool XYVector<T>::operator < (const XYVector<T> &vec) {
+    for (int i = 0; i < min(this->size , vec.size); ++i) {
+        if(this->data[i] < vec.data[i]){
+            return true;
+        }
+    }
+    return false;
+}
 
 // push back elements
 template<class T>
@@ -195,6 +220,8 @@ void XYVector<T>::clear(){
     }
 
 }
+
+
 
 
 #endif //VECTORSTL_VECTORHEADER_H
