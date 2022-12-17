@@ -177,8 +177,8 @@ typename XYVector<T>::Iterator XYVector<T>::end() {
 }
 
 template<class T>
-void XYVector<T>::erase(T* m) {
-    Iterator temp  = new T [capacity];
+void XYVector<T>::erase(Iterator m) {
+    auto temp  = new T [capacity];
     // copying old array elements to new array
     for(int i = 0, j =0; i < size; i++ , j++){
         if(&data[j] == m) j++;
@@ -299,7 +299,7 @@ bool operator==(const XYVector<T>&)      // Return true if ==
 bool operator< (const XYVector<T>&)     // Compares item by item
                                         // Return true if first different item in this is < in other
 ================================================================================
-void erase(iterator)                                // Remove item at iterator
+void erase(iterator)          D                      // Remove item at iterator
                                                         // Throw exception if invalid iter
 void insert(iterator, T)                            // Insert item at iterator
                                                     // Throw exception if invalid

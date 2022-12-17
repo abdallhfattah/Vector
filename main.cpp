@@ -49,7 +49,7 @@ int main(){
     v.push_back(6);
     v.push_back(7);
     v.push_back(8);
-    auto itr  = v.begin() + 1;
+    auto itr  = v.end() + 1;
     // cout << * itr << endl << itr << endl;
     v.erase(itr);
     for (int i = 0; i < v.get_size(); ++i) {
