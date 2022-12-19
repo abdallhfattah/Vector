@@ -4,7 +4,7 @@
 
 #ifndef VECTORSTL_VECTORHEADER_H
 #define VECTORSTL_VECTORHEADER_H
-
+#include <vector>
 template <class T>
 class XYVector{
 private:
@@ -16,7 +16,7 @@ public:
     explicit XYVector (int size);
     XYVector(const XYVector & vec);
     ~XYVector();
-    XYVector (Iterator arr, int  n );
+    XYVector (Iterator, int  n);
 
     // operators
     XYVector & operator =(XYVector && move) noexcept ;
@@ -45,6 +45,7 @@ public:
     int get_capacity() const; // Return size of current allocated
     void clear();     // Delete all vector content
     void erase(Iterator);
+    void erase(Iterator it1, Iterator it2);
     // friend
     // friend std::ostream & operator << (std:: ostream& out, XYVector<T>);
 
@@ -81,13 +82,15 @@ XYVector<T>:: XYVector(int size) {
 }
 
 
-template<class T>
-XYVector<T>::XYVector(Iterator _arr, int n) : size{n}, capacity(n) , data{new T [n]}{
-    for(int i = 0; i < size; i++){
-        data[i] = _arr[i];
+template <class T>
+XYVector<T>::XYVector(Iterator t, int n) : size{n} , capacity{n}
+{
+    data = new T[n];
+    for(int i = 0; i < n;i++)
+    {
+        data[i] = t[i];
     }
 }
-
 
 // Destructor
 template<class T>
@@ -95,6 +98,7 @@ XYVector<T>:: ~XYVector(){
     // freeing memory
     delete [] data;
 }
+
 
 // Copy assignment
 template <class T>
@@ -189,8 +193,27 @@ void XYVector<T>::erase(Iterator m) {
     size--;
     data = temp;
 }
-
-
+template <class T>
+void XYVector<T>::erase(Iterator itr1, Iterator itr2)
+{
+    if (itr1 > itr2)
+    {
+        throw std::invalid_argument("");
+    }              //   itr1->6     itr2 ->8
+    std::vector<T> vec; // 5 6 7 8 9
+    bool flag = false;
+    for (int i = 0; i < this->size ; ++i)
+    {
+        if(&data[i] == itr2){flag = false; continue;}
+        else if(flag){continue;}
+        else if(&data[i] == itr1){flag = true; continue;}
+        vec.push_back(data[i]); // 5
+    }
+    delete[] data;
+    data = new T [capacity];
+    size = vec.size();
+    for(int i = 0; i < vec.size(); i++){data[i] = vec[i];}
+}
 
 
 
@@ -201,7 +224,7 @@ void XYVector<T>::push_back(T element)
     // if the number of elements is equal to the capacity, that means we don't have space to accommodate more elements
     // We need to double the capacity
     if(size == capacity){
-        Iterator temp  = new T [capacity * 2];
+        auto temp  = new T [capacity * 2];
         // copying old array elements to new array
         for(int i = 0; i < capacity; i++){
             temp[i] =  data[i];
@@ -215,23 +238,20 @@ void XYVector<T>::push_back(T element)
     data[size++] = element;
 }
 
-
-template<class T>
-void XYVector<T>::pop_back() {
-    this->data[size - 1] = NULL;
-    --size;
-}
-
-
 template<class T>
 bool XYVector<T>::empty(){
     if(size == 0) return true;
     return false;
 }
+template<class T>
+void XYVector<T>::pop_back() {
+    --size;
+    // this->erase(this->end() , this->end());
+}
 
 template<class T>
 int XYVector<T>::resize(){
-    Iterator temp  = new T [capacity * 2];
+    auto temp  = new T [capacity * 2];
     // copying old array elements to new array
     for(int i = 0; i < capacity; i++){
         temp[i] =  data[i];
