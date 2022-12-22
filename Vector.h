@@ -5,15 +5,16 @@
 #ifndef VECTORSTL_VECTORHEADER_H
 #define VECTORSTL_VECTORHEADER_H
 #include <vector>
+using namespace std;
 template <class T>
 class XYVector{
 private:
-    int size,capacity;
+    int size{},capacity;
     typedef T* Iterator;
     Iterator data;
 public:
     XYVector();
-    explicit XYVector (int size);
+    explicit XYVector (int);
     XYVector(const XYVector & vec);
     ~XYVector();
     XYVector (Iterator, int  n);
@@ -51,12 +52,17 @@ public:
 
 };
 
-
-/*template<class T>
-std::ostream &operator<<(std::ostream &out, XYVector<T>) {
-
-}*/
-
+// friend method
+template<class T>
+std::ostream & operator << (std::ostream &out, XYVector<T> & v) {
+    std::cout << "your size is: " << v.get_size() << std::endl;
+    std::cout << "your capacity is: " << v.get_capacity() << std::endl;
+    std::cout << "your data is: [" << std::endl;
+    for(int i = 0; i < v.get_size(); i++)
+    {
+        std::cout << v.data[i] << std::endl;
+    }
+}
 
 // constructors
 template <class T>
@@ -67,14 +73,13 @@ XYVector<T>::XYVector() : size{0} , capacity{5}
 
 // constructor passing size
 template <class T>
-XYVector<T>:: XYVector(int size) {
+XYVector<T>:: XYVector(int soize) : size{0} , capacity{soize} {
     // checking if size is negative or too big
-    if(size > 1000000 || size < 0){
+    if(soize > 1000000 || soize < 0){
         throw std::bad_alloc();
     }
-    this->size = size;
-    capacity = size;
     data = new T[capacity];
+    // filling array with nothing
     T inti{};
     for (int i = 0; i < capacity; ++i) {
         data[i] =  inti;
@@ -190,8 +195,8 @@ void XYVector<T>::erase(Iterator m) {
     }
     // deleting previous array
     delete [] data;
-    size--;
     data = temp;
+    size--;
 }
 template <class T>
 void XYVector<T>::erase(Iterator itr1, Iterator itr2)
@@ -223,7 +228,7 @@ void XYVector<T>::push_back(T element)
 {
     // if the number of elements is equal to the capacity, that means we don't have space to accommodate more elements
     // We need to double the capacity
-    if(size == capacity){
+    if(size >= capacity){
         auto temp  = new T [capacity * 2];
         // copying old array elements to new array
         for(int i = 0; i < capacity; i++){

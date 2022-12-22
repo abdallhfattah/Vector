@@ -42,7 +42,7 @@ int main(){
         cout << "TRUE";
     } else
         cout << "False";*/
-   XYVector<int> vec;
+    XYVector<int> vec(5);
     vec.push_back(6);
     vec.push_back(0);
     vec.push_back(6);
@@ -52,13 +52,15 @@ int main(){
     auto it1 = vec.begin();
     auto it2 = vec.begin()+ 3;
     vec.pop_back();
+    cout << vec << endl;
     //vec.erase(vec.begin() + 4, vec.begin());
-    cout << vec.get_capacity() << endl;
+   /* cout << vec.get_capacity() << endl;
     cout << vec.get_size() << endl << endl;
     // cout << * itr << endl << itr << endl;
     for (int i = 0; i < vec.get_size(); ++i) {
         cout << vec[i] << endl;
-    }
+    }*/
+
 
  /* vector<int> vec{1,2,3};
   auto itr = vec.begin();
