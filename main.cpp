@@ -1,9 +1,22 @@
+/**
+ * @file main.cpp
+ * @author george _ abdalah
+ * @brief  this is tha main file
+ * @version 1
+ * @date 2022-12-22
+ * @details this code is training on templates
+ * @copyright Copyright (c) 2022
+**/
+
 #include <bits/stdc++.h>
 #include "Vector.h"
 
 using namespace std;
 
-
+/**
+ * @brief this is the start of code
+ * @return int 
+ */
 int main(){
     /*vector<string>v(10);
     v[0] = "hello world";
@@ -14,6 +27,7 @@ int main(){
 
     for(auto &vv: v){
         cout << vv << endl;
+
     }
     cout << "======================" << endl;
     XYVector<string> vec(5);
@@ -65,4 +79,5 @@ int main(){
  /* vector<int> vec{1,2,3};
   auto itr = vec.begin();
   cout << &itr << endl;*/
+  return 0;
 }

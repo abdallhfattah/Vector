@@ -1,0 +1,333 @@
+\hypertarget{_vector_8h_source}{}\doxysection{Vector.\+h}
+\mbox{\hyperlink{_vector_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#ifndef VECTORSTL\_VECTORHEADER\_H}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define VECTORSTL\_VECTORHEADER\_H}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{14 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{15 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{16 \textcolor{keyword}{class }\mbox{\hyperlink{class_x_y_vector}{XYVector}}\{}
+\DoxyCodeLine{17 \textcolor{keyword}{private}:}
+\DoxyCodeLine{18     \textcolor{keywordtype}{int} size\{\},capacity;}
+\DoxyCodeLine{19     \textcolor{keyword}{typedef} T* Iterator;}
+\DoxyCodeLine{20     Iterator data;}
+\DoxyCodeLine{21 \textcolor{keyword}{public}:}
+\DoxyCodeLine{22     \mbox{\hyperlink{class_x_y_vector_a1961cfb9bdf0cba185944f8a566ff86e}{XYVector}}();}
+\DoxyCodeLine{23     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_x_y_vector_a1961cfb9bdf0cba185944f8a566ff86e}{XYVector}} (\textcolor{keywordtype}{int});}
+\DoxyCodeLine{24     \mbox{\hyperlink{class_x_y_vector_a1961cfb9bdf0cba185944f8a566ff86e}{XYVector}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_x_y_vector}{XYVector}} \& vec);}
+\DoxyCodeLine{25     \mbox{\hyperlink{class_x_y_vector_ad1f93f11ae8921db0b38496d54c12f68}{\string~XYVector}}();}
+\DoxyCodeLine{26     \mbox{\hyperlink{class_x_y_vector_a1961cfb9bdf0cba185944f8a566ff86e}{XYVector}} (Iterator, \textcolor{keywordtype}{int}  n);}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \textcolor{comment}{// operators}}
+\DoxyCodeLine{29     \mbox{\hyperlink{class_x_y_vector}{XYVector}} \& \mbox{\hyperlink{class_x_y_vector_ad05058a87309ade8d443c8b9d14f0afd}{operator =}}(\mbox{\hyperlink{class_x_y_vector}{XYVector}} \&\& move) noexcept ;}
+\DoxyCodeLine{30     T \& \mbox{\hyperlink{class_x_y_vector_a85ba4ddda8e5b2b3e5de59c4d18b5024}{operator[]}}(\textcolor{keywordtype}{int} element);}
+\DoxyCodeLine{31     \mbox{\hyperlink{class_x_y_vector}{XYVector}} \& \mbox{\hyperlink{class_x_y_vector_ad05058a87309ade8d443c8b9d14f0afd}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_x_y_vector}{XYVector}} \& copy);}
+\DoxyCodeLine{32     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_x_y_vector_aa77f48e73fa5e9f3e706a792512e0232}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_x_y_vector}{XYVector<T>}}\& vec);      \textcolor{comment}{// Return true if ==}}
+\DoxyCodeLine{33     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_x_y_vector_ad1c36c356fbfce5e4c879a3180456a9c}{operator< }}(\textcolor{keyword}{const} \mbox{\hyperlink{class_x_y_vector}{XYVector<T>}}\& vec);}
+\DoxyCodeLine{34     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_x_y_vector_a40c800be03e0a43b88000eea9f9230fd}{operator> }}(\textcolor{keyword}{const} \mbox{\hyperlink{class_x_y_vector}{XYVector<T>}}\& vec);\textcolor{comment}{// Compares item by item}}
+\DoxyCodeLine{35     \textcolor{comment}{// Return true if first different item in this is < in other}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     \textcolor{comment}{//iterators}}
+\DoxyCodeLine{39     Iterator \mbox{\hyperlink{class_x_y_vector_a073e845ee874bdadd4ae25d1e1f2472a}{begin}}();}
+\DoxyCodeLine{40     Iterator \mbox{\hyperlink{class_x_y_vector_af9f1b8c7ac33d8fbf8c57787ca25132e}{end}}();}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     \textcolor{comment}{//iterators operators}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45     \textcolor{comment}{// methods}}
+\DoxyCodeLine{46     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_y_vector_ad7ca8c5beb62d7fe7daae2c74962d59d}{push\_back}}(T element);}
+\DoxyCodeLine{47     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_y_vector_a40e12a9bc78a6854441d64fdf78bf5ec}{pop\_back}}();}
+\DoxyCodeLine{48     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_y_vector_adb8eb06251c78da3595509218256a6fa}{print}}();}
+\DoxyCodeLine{49     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_x_y_vector_a75de65b5671dfc47382c56b26a9f4415}{empty}}();}
+\DoxyCodeLine{50     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_x_y_vector_abd5b4d785c2e5bf7693d91d4b1e0b7e0}{resize}}();}
+\DoxyCodeLine{51     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_x_y_vector_ad8abf07f6e5f64fdd14f334905082452}{get\_size}}() \textcolor{keyword}{const};     \textcolor{comment}{// Return current size of vec}}
+\DoxyCodeLine{52     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_x_y_vector_afde3801ce9ca9c21f0b4c36a9f2a5c85}{get\_capacity}}() \textcolor{keyword}{const}; \textcolor{comment}{// Return size of current allocated}}
+\DoxyCodeLine{53     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_y_vector_aa7cde5dd961426330c073b871c59132f}{clear}}();     \textcolor{comment}{// Delete all vector content}}
+\DoxyCodeLine{54     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_y_vector_aff2adeac87fcde0837e0cdb04c1e450b}{erase}}(Iterator);}
+\DoxyCodeLine{55     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_y_vector_aff2adeac87fcde0837e0cdb04c1e450b}{erase}}(Iterator it1, Iterator it2);}
+\DoxyCodeLine{56     \textcolor{comment}{// friend}}
+\DoxyCodeLine{57      \textcolor{keyword}{friend} ostream \&\mbox{\hyperlink{class_x_y_vector_ace5399e1c60b25df0d8d800ff991b333}{operator <<}}( ostream\& out, \mbox{\hyperlink{class_x_y_vector}{XYVector<T>}});}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \};}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 }
+\DoxyCodeLine{70 \textcolor{comment}{// friend method}}
+\DoxyCodeLine{71 \textcolor{keyword}{template}<\textcolor{keyword}{class} T>}
+\DoxyCodeLine{72 typename::ostream \& \mbox{\hyperlink{_vector_8h_a400e10141ad4a79253087baf66dd856a}{operator<< }}(ostream \&out, \mbox{\hyperlink{class_x_y_vector}{XYVector<T>}} v) \{}
+\DoxyCodeLine{73     out << \textcolor{stringliteral}{"{}your size is: "{}} << v.\mbox{\hyperlink{class_x_y_vector_ad8abf07f6e5f64fdd14f334905082452}{get\_size}}() << std::endl;}
+\DoxyCodeLine{74     out << \textcolor{stringliteral}{"{}your capacity is: "{}} << v.\mbox{\hyperlink{class_x_y_vector_afde3801ce9ca9c21f0b4c36a9f2a5c85}{get\_capacity}}() << std::endl;}
+\DoxyCodeLine{75     out << \textcolor{stringliteral}{"{}your data is: ["{}} << std::endl;}
+\DoxyCodeLine{76     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < v.\mbox{\hyperlink{class_x_y_vector_ad8abf07f6e5f64fdd14f334905082452}{get\_size}}(); i++)}
+\DoxyCodeLine{77     \{}
+\DoxyCodeLine{78         out << v.data[i] << std::endl;}
+\DoxyCodeLine{79     \}}
+\DoxyCodeLine{80     cout <<\textcolor{stringliteral}{"{}\}"{}} <<endl;}
+\DoxyCodeLine{81     \textcolor{keywordflow}{return} out;}
+\DoxyCodeLine{82 \}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 \textcolor{comment}{// constructors}}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 }
+\DoxyCodeLine{92 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{93 \mbox{\hyperlink{class_x_y_vector_a1961cfb9bdf0cba185944f8a566ff86e}{XYVector<T>::XYVector}}() : size\{0\} , capacity\{5\}}
+\DoxyCodeLine{94 \{}
+\DoxyCodeLine{95     data = \textcolor{keyword}{new} T[capacity];}
+\DoxyCodeLine{96 \}}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98 }
+\DoxyCodeLine{104 \textcolor{comment}{// constructor passing size}}
+\DoxyCodeLine{105 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{106 \mbox{\hyperlink{class_x_y_vector_a1961cfb9bdf0cba185944f8a566ff86e}{XYVector<T>:: XYVector}}(\textcolor{keywordtype}{int} soize) : size\{0\} , capacity\{soize\} \{}
+\DoxyCodeLine{107     \textcolor{comment}{// checking if size is negative or too big}}
+\DoxyCodeLine{108     \textcolor{keywordflow}{if}(soize > 1000000 || soize < 0)}
+\DoxyCodeLine{109     \{}
+\DoxyCodeLine{110         \textcolor{keywordflow}{throw} std::bad\_alloc();}
+\DoxyCodeLine{111     \}}
+\DoxyCodeLine{112     data = \textcolor{keyword}{new} T[capacity];}
+\DoxyCodeLine{113     \textcolor{comment}{// filling array with nothing}}
+\DoxyCodeLine{114     T inti\{\};}
+\DoxyCodeLine{115     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < capacity; ++i) \{}
+\DoxyCodeLine{116         data[i] =  inti;}
+\DoxyCodeLine{117     \}}
+\DoxyCodeLine{118 \}}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120 }
+\DoxyCodeLine{127 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{128 \mbox{\hyperlink{class_x_y_vector_a1961cfb9bdf0cba185944f8a566ff86e}{XYVector<T>::XYVector}}(Iterator t, \textcolor{keywordtype}{int} n) : size\{n\} , capacity\{n\}}
+\DoxyCodeLine{129 \{}
+\DoxyCodeLine{130     data = \textcolor{keyword}{new} T[n];}
+\DoxyCodeLine{131     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < n;i++)}
+\DoxyCodeLine{132     \{}
+\DoxyCodeLine{133         data[i] = t[i];}
+\DoxyCodeLine{134     \}}
+\DoxyCodeLine{135 \}}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137 }
+\DoxyCodeLine{142 \textcolor{comment}{// Destructor}}
+\DoxyCodeLine{143 \textcolor{keyword}{template}<\textcolor{keyword}{class} T>}
+\DoxyCodeLine{144 \mbox{\hyperlink{class_x_y_vector_ad1f93f11ae8921db0b38496d54c12f68}{XYVector<T>:: \string~XYVector}}()\{}
+\DoxyCodeLine{145     \textcolor{comment}{// freeing memory}}
+\DoxyCodeLine{146     \textcolor{keyword}{delete} [] data;}
+\DoxyCodeLine{147 \}}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{149 }
+\DoxyCodeLine{155 \textcolor{comment}{// Copy assignment}}
+\DoxyCodeLine{156 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{157 \mbox{\hyperlink{class_x_y_vector_a1961cfb9bdf0cba185944f8a566ff86e}{XYVector<T>:: XYVector}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_x_y_vector}{XYVector}} \&vec) : size\{vec.size\} , capacity\{vec.capacity\} , data\{new T [capacity]\}\{}
+\DoxyCodeLine{158     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; ++i) \{}
+\DoxyCodeLine{159         this-\/>data[i] = vec.data[i];}
+\DoxyCodeLine{160     \}}
+\DoxyCodeLine{161 \}}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163 \textcolor{comment}{// operators}}
+\DoxyCodeLine{164 }
+\DoxyCodeLine{170 \textcolor{keyword}{template}<\textcolor{keyword}{class} T>}
+\DoxyCodeLine{171 T \& \mbox{\hyperlink{class_x_y_vector_a85ba4ddda8e5b2b3e5de59c4d18b5024}{XYVector<T>::operator[]}}(\textcolor{keywordtype}{int} element)\{}
+\DoxyCodeLine{172     \textcolor{keywordflow}{if}(element > capacity || element < 0)\{}
+\DoxyCodeLine{173         \textcolor{keywordflow}{throw} std::out\_of\_range(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{174     \}}
+\DoxyCodeLine{175     \textcolor{keywordflow}{return} data[element];}
+\DoxyCodeLine{176 \}}
+\DoxyCodeLine{177 }
+\DoxyCodeLine{178 }
+\DoxyCodeLine{184 \textcolor{keyword}{template}<\textcolor{keyword}{class} T>}
+\DoxyCodeLine{185 \mbox{\hyperlink{class_x_y_vector}{XYVector<T>}} \& \mbox{\hyperlink{class_x_y_vector_ad05058a87309ade8d443c8b9d14f0afd}{XYVector<T>::operator = }}(\textcolor{keyword}{const} \mbox{\hyperlink{class_x_y_vector}{XYVector}} \&copy)\{}
+\DoxyCodeLine{186     this-\/>data = \textcolor{keyword}{new} T [copy.capacity];}
+\DoxyCodeLine{187     this-\/>size = copy.size;}
+\DoxyCodeLine{188     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < copy.size; ++i)\{}
+\DoxyCodeLine{189         this-\/>data[i] = copy.data[i];}
+\DoxyCodeLine{190     \}}
+\DoxyCodeLine{191     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{192 \}}
+\DoxyCodeLine{193 }
+\DoxyCodeLine{194 }
+\DoxyCodeLine{200 \textcolor{keyword}{template}<\textcolor{keyword}{class} T>}
+\DoxyCodeLine{201 \mbox{\hyperlink{class_x_y_vector}{XYVector<T>}} \& \mbox{\hyperlink{class_x_y_vector_ad05058a87309ade8d443c8b9d14f0afd}{XYVector<T>:: operator = }}(\mbox{\hyperlink{class_x_y_vector}{XYVector}} \&\& move) \textcolor{keyword}{noexcept}\{}
+\DoxyCodeLine{202     \textcolor{keywordflow}{if}(\textcolor{keyword}{this} == \&move)\{}
+\DoxyCodeLine{203         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{204     \}}
+\DoxyCodeLine{205     \textcolor{keyword}{delete} [] data;}
+\DoxyCodeLine{206     size = move.size;}
+\DoxyCodeLine{207     capacity = move.capacity;}
+\DoxyCodeLine{208     data = move.data;}
+\DoxyCodeLine{209     move.data = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{210     move.size = 0;}
+\DoxyCodeLine{211     move.capacity = 0;}
+\DoxyCodeLine{212 \}}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{214 }
+\DoxyCodeLine{221 \textcolor{keyword}{template}<\textcolor{keyword}{class} T>}
+\DoxyCodeLine{222 \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_x_y_vector_aa77f48e73fa5e9f3e706a792512e0232}{XYVector<T>::operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_x_y_vector}{XYVector<T>}} \& vec) \{}
+\DoxyCodeLine{223     \textcolor{keywordtype}{int} \_local\_size = vec.size;}
+\DoxyCodeLine{224     \textcolor{keywordflow}{if}(this-\/>size != \_local\_size) \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{225     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{226         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \_local\_size; ++i) \{}
+\DoxyCodeLine{227             \textcolor{keywordflow}{if}(\textcolor{keyword}{this}[i] != vec[i]) \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{228         \}}
+\DoxyCodeLine{229         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{230     \}}
+\DoxyCodeLine{231 \}}
+\DoxyCodeLine{232 }
+\DoxyCodeLine{233 }
+\DoxyCodeLine{240 \textcolor{keyword}{template}<\textcolor{keyword}{class} T>}
+\DoxyCodeLine{241 \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_x_y_vector_ad1c36c356fbfce5e4c879a3180456a9c}{XYVector<T>::operator < }}(\textcolor{keyword}{const} \mbox{\hyperlink{class_x_y_vector}{XYVector<T>}} \&vec) \{}
+\DoxyCodeLine{242     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < std::min(this-\/>size , vec.size); ++i) \{}
+\DoxyCodeLine{243         \textcolor{keywordflow}{if}(this-\/>data[i] < vec.data[i])\{}
+\DoxyCodeLine{244             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{245         \}}
+\DoxyCodeLine{246     \}}
+\DoxyCodeLine{247     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{248 \}}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{250 }
+\DoxyCodeLine{257 \textcolor{keyword}{template}<\textcolor{keyword}{class} T>}
+\DoxyCodeLine{258 \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_x_y_vector_a40c800be03e0a43b88000eea9f9230fd}{XYVector<T>::operator >}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_x_y_vector}{XYVector<T>}} \&vec) \{}
+\DoxyCodeLine{259     \textcolor{keywordflow}{return} !\mbox{\hyperlink{class_x_y_vector_ad1c36c356fbfce5e4c879a3180456a9c}{XYVector<T>::operator<}}(\&vec);}
+\DoxyCodeLine{260 \}}
+\DoxyCodeLine{261 }
+\DoxyCodeLine{262 }
+\DoxyCodeLine{263 }
+\DoxyCodeLine{264 \textcolor{comment}{// Iterators}}
+\DoxyCodeLine{265 }
+\DoxyCodeLine{266 }
+\DoxyCodeLine{272 \textcolor{keyword}{template}<\textcolor{keyword}{class} T>}
+\DoxyCodeLine{273 \textcolor{keyword}{typename} XYVector<T>::Iterator \mbox{\hyperlink{class_x_y_vector_a073e845ee874bdadd4ae25d1e1f2472a}{XYVector<T>::begin}}() \{}
+\DoxyCodeLine{274     \textcolor{keywordflow}{return} \&data[0];}
+\DoxyCodeLine{275 \}}
+\DoxyCodeLine{276 }
+\DoxyCodeLine{277 }
+\DoxyCodeLine{283 \textcolor{keyword}{template}<\textcolor{keyword}{class} T>}
+\DoxyCodeLine{284 \textcolor{keyword}{typename} XYVector<T>::Iterator \mbox{\hyperlink{class_x_y_vector_af9f1b8c7ac33d8fbf8c57787ca25132e}{XYVector<T>::end}}() \{}
+\DoxyCodeLine{285     \textcolor{keywordflow}{return} \&data[size -\/ 1];}
+\DoxyCodeLine{286 \}}
+\DoxyCodeLine{287 }
+\DoxyCodeLine{288 }
+\DoxyCodeLine{294 \textcolor{keyword}{template}<\textcolor{keyword}{class} T>}
+\DoxyCodeLine{295 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_y_vector_aff2adeac87fcde0837e0cdb04c1e450b}{XYVector<T>::erase}}(Iterator m) \{}
+\DoxyCodeLine{296     \textcolor{keyword}{auto} temp  = \textcolor{keyword}{new} T [capacity];}
+\DoxyCodeLine{297     \textcolor{comment}{// copying old array elements to new array}}
+\DoxyCodeLine{298     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0, j =0; i < size; i++ , j++)\{}
+\DoxyCodeLine{299         \textcolor{keywordflow}{if}(\&data[j] == m) j++;}
+\DoxyCodeLine{300         temp[i] = data[j];}
+\DoxyCodeLine{301     \}}
+\DoxyCodeLine{302     \textcolor{comment}{// deleting previous array}}
+\DoxyCodeLine{303     \textcolor{keyword}{delete} [] data;}
+\DoxyCodeLine{304     data = temp;}
+\DoxyCodeLine{305     size-\/-\/;}
+\DoxyCodeLine{306 \}}
+\DoxyCodeLine{307 }
+\DoxyCodeLine{308 }
+\DoxyCodeLine{316 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{317 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_y_vector_aff2adeac87fcde0837e0cdb04c1e450b}{XYVector<T>::erase}}(Iterator itr1, Iterator itr2)}
+\DoxyCodeLine{318 \{}
+\DoxyCodeLine{319     \textcolor{keywordflow}{if} (itr1 > itr2)}
+\DoxyCodeLine{320     \{}
+\DoxyCodeLine{321         \textcolor{keywordflow}{throw} std::invalid\_argument(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{322     \}              \textcolor{comment}{//   itr1-\/>6     itr2 -\/>8}}
+\DoxyCodeLine{323     std::vector<T> vec; \textcolor{comment}{// 5 6 7 8 9}}
+\DoxyCodeLine{324     \textcolor{keywordtype}{bool} flag = \textcolor{keyword}{false};}
+\DoxyCodeLine{325     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < this-\/>size ; ++i)}
+\DoxyCodeLine{326     \{}
+\DoxyCodeLine{327         \textcolor{keywordflow}{if}(\&data[i] == itr2)\{flag = \textcolor{keyword}{false}; \textcolor{keywordflow}{continue};\}}
+\DoxyCodeLine{328         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(flag)\{\textcolor{keywordflow}{continue};\}}
+\DoxyCodeLine{329         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\&data[i] == itr1)\{flag = \textcolor{keyword}{true}; \textcolor{keywordflow}{continue};\}}
+\DoxyCodeLine{330         vec.push\_back(data[i]); \textcolor{comment}{// 5}}
+\DoxyCodeLine{331     \}}
+\DoxyCodeLine{332     \textcolor{keyword}{delete}[] data;}
+\DoxyCodeLine{333     data = \textcolor{keyword}{new} T [capacity];}
+\DoxyCodeLine{334     size = vec.size();}
+\DoxyCodeLine{335     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < vec.size(); i++)\{data[i] = vec[i];\}}
+\DoxyCodeLine{336 \}}
+\DoxyCodeLine{337 }
+\DoxyCodeLine{338 }
+\DoxyCodeLine{339 \textcolor{comment}{// methods}}
+\DoxyCodeLine{340 }
+\DoxyCodeLine{341 }
+\DoxyCodeLine{348 \textcolor{keyword}{template}<\textcolor{keyword}{class} T>}
+\DoxyCodeLine{349 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_y_vector_ad7ca8c5beb62d7fe7daae2c74962d59d}{XYVector<T>::push\_back}}(T element)}
+\DoxyCodeLine{350 \{}
+\DoxyCodeLine{351     \textcolor{comment}{// if the number of elements is equal to the capacity, that means we don't have space to accommodate more elements}}
+\DoxyCodeLine{352     \textcolor{comment}{// We need to double the capacity}}
+\DoxyCodeLine{353     \textcolor{keywordflow}{if}(size >= capacity)\{}
+\DoxyCodeLine{354         \textcolor{keyword}{auto} temp  = \textcolor{keyword}{new} T [capacity * 2];}
+\DoxyCodeLine{355         \textcolor{comment}{// copying old array elements to new array}}
+\DoxyCodeLine{356         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < capacity; i++)\{}
+\DoxyCodeLine{357             temp[i] =  data[i];}
+\DoxyCodeLine{358         \}}
+\DoxyCodeLine{359         \textcolor{comment}{// deleting previous array}}
+\DoxyCodeLine{360         \textcolor{keyword}{delete} [] data;}
+\DoxyCodeLine{361         data = temp;}
+\DoxyCodeLine{362         capacity *= 2;}
+\DoxyCodeLine{363     \}}
+\DoxyCodeLine{364     \textcolor{comment}{// Inserting the element}}
+\DoxyCodeLine{365     data[size++] = element;}
+\DoxyCodeLine{366 \}}
+\DoxyCodeLine{367 }
+\DoxyCodeLine{368 }
+\DoxyCodeLine{374 \textcolor{keyword}{template}<\textcolor{keyword}{class} T>}
+\DoxyCodeLine{375 \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_x_y_vector_a75de65b5671dfc47382c56b26a9f4415}{XYVector<T>::empty}}()\{}
+\DoxyCodeLine{376     \textcolor{keywordflow}{if}(size == 0) \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{377     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{378 \}}
+\DoxyCodeLine{379 }
+\DoxyCodeLine{380 }
+\DoxyCodeLine{386 \textcolor{keyword}{template}<\textcolor{keyword}{class} T>}
+\DoxyCodeLine{387 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_y_vector_a40e12a9bc78a6854441d64fdf78bf5ec}{XYVector<T>::pop\_back}}() \{}
+\DoxyCodeLine{388     -\/-\/size;}
+\DoxyCodeLine{389     \textcolor{comment}{// this-\/>erase(this-\/>end() , this-\/>end());}}
+\DoxyCodeLine{390 \}}
+\DoxyCodeLine{391 }
+\DoxyCodeLine{392 }
+\DoxyCodeLine{398 \textcolor{keyword}{template}<\textcolor{keyword}{class} T>}
+\DoxyCodeLine{399 \textcolor{keywordtype}{int} \mbox{\hyperlink{class_x_y_vector_abd5b4d785c2e5bf7693d91d4b1e0b7e0}{XYVector<T>::resize}}()\{}
+\DoxyCodeLine{400     \textcolor{keyword}{auto} temp  = \textcolor{keyword}{new} T [capacity * 2];}
+\DoxyCodeLine{401     \textcolor{comment}{// copying old array elements to new array}}
+\DoxyCodeLine{402     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < capacity; i++)\{}
+\DoxyCodeLine{403         temp[i] =  data[i];}
+\DoxyCodeLine{404     \}}
+\DoxyCodeLine{405     \textcolor{comment}{// deleting previous array}}
+\DoxyCodeLine{406     \textcolor{keyword}{delete} [] data;}
+\DoxyCodeLine{407     data = temp;}
+\DoxyCodeLine{408     capacity *= 2;}
+\DoxyCodeLine{409 \}}
+\DoxyCodeLine{410 }
+\DoxyCodeLine{411 }
+\DoxyCodeLine{417 \textcolor{keyword}{template}<\textcolor{keyword}{class} T>}
+\DoxyCodeLine{418 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_y_vector_adb8eb06251c78da3595509218256a6fa}{XYVector<T>::print}}()\{}
+\DoxyCodeLine{419     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; ++i) \{}
+\DoxyCodeLine{420         std::cout << data[i] << std::endl;}
+\DoxyCodeLine{421     \}}
+\DoxyCodeLine{422 \}}
+\DoxyCodeLine{423 }
+\DoxyCodeLine{424 }
+\DoxyCodeLine{430 \textcolor{keyword}{template}<\textcolor{keyword}{class} T>}
+\DoxyCodeLine{431 \textcolor{keywordtype}{int} \mbox{\hyperlink{class_x_y_vector_ad8abf07f6e5f64fdd14f334905082452}{XYVector<T>::get\_size}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{432     \textcolor{keywordflow}{return} size;}
+\DoxyCodeLine{433 \}}
+\DoxyCodeLine{434 }
+\DoxyCodeLine{435 }
+\DoxyCodeLine{441 \textcolor{keyword}{template}<\textcolor{keyword}{class} T>}
+\DoxyCodeLine{442 \textcolor{keywordtype}{int} \mbox{\hyperlink{class_x_y_vector_afde3801ce9ca9c21f0b4c36a9f2a5c85}{XYVector<T>::get\_capacity}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{443     \textcolor{keywordflow}{return} capacity;}
+\DoxyCodeLine{444 \}}
+\DoxyCodeLine{445 }
+\DoxyCodeLine{446 }
+\DoxyCodeLine{452 \textcolor{keyword}{template}<\textcolor{keyword}{class} T>}
+\DoxyCodeLine{453 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_y_vector_aa7cde5dd961426330c073b871c59132f}{XYVector<T>::clear}}()\{}
+\DoxyCodeLine{454     this-\/>size = 0;}
+\DoxyCodeLine{455     \textcolor{comment}{// initializing the vector}}
+\DoxyCodeLine{456     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < capacity; ++i) \{}
+\DoxyCodeLine{457         data[i] = NULL;}
+\DoxyCodeLine{458     \}}
+\DoxyCodeLine{459 \}}
+\DoxyCodeLine{460 }
+\DoxyCodeLine{461 }
+\DoxyCodeLine{462 }
+\DoxyCodeLine{463 }
+\DoxyCodeLine{464 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//VECTORSTL\_VECTORHEADER\_H}}
+\DoxyCodeLine{465 }
+
+\end{DoxyCode}
