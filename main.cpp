@@ -18,13 +18,18 @@ using namespace std;
  * @return int 
  */
 int main(){
-    XYVector<int> vec(5);
+ /*   XYVector<int> vec(5);
     vec.push_back(6);
     vec.push_back(0);
     vec.push_back(6);
     vec.push_back(6);
     vec.push_back(7);// 6 7 8
-    vec.push_back(8);// 6 0 6 6 7 8
+    vec.push_back(8);// 6 0 6 6 7 8*/
+    XYVector<string> vec(5);
+    vec.push_back("Hello");
+    vec.push_back("world");
+    vec.push_back("Hello");
+    vec.push_back("Hel");
     vec.pop_back();
     cout << vec << endl;
 

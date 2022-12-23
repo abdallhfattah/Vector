@@ -14,21 +14,6 @@
 using namespace std;
 
 template <class T>
-class XYVector;
-
-template<typename T>
-ostream &operator << ( ostream& out,XYVector<T> v){
-    out << "[";
-    for(int i = 0; i < v.get_size() - 1; i++)
-    {
-        out << v[i]<< ", ";
-    }
-    out << v[v.get_size() - 1 ] << "]";
-    return out;
-}
-
-
-template <class T>
 class XYVector{
 private:
     int size{},capacity;
@@ -70,10 +55,24 @@ public:
     void erase(Iterator);
     void erase(Iterator it1, Iterator it2);
     // friend
-    //friend ostream& operator <<  (ostream& out , XYVector<T> );
+    template<class name>
+    friend ostream& operator <<  (ostream& out , XYVector<name>&);
 
 };
 
+template<class name>
+ostream &operator << (ostream &out, XYVector<name> & v) {
+    out << "Vector size :" << v.size << endl;
+    out << "Vector capacity :" << v.capacity << endl;
+    out << "Vector content: ";
+    out << "[";
+    for(int i = 0; i < v.get_size() - 1; i++)
+    {
+        out << v[i]<< ", ";
+    }
+    out << v[v.get_size() - 1 ] << "]";
+    return out;
+}
 
 /**
  * @brief the friend function
@@ -459,6 +458,7 @@ void XYVector<T>::clear(){
         data[i] = NULL;
     }
 }
+
 
 
 
