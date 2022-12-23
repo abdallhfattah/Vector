@@ -1,6 +1,6 @@
 /**
  * @file Vector.h
- * @author george_abdalah
+ * @author george_abdallah
  * @brief  this is the header file
  * @version 1
  * @date 2022-12-22
@@ -12,6 +12,22 @@
 #define VECTORSTL_VECTORHEADER_H
 #include <vector>
 using namespace std;
+
+template <class T>
+class XYVector;
+
+template<typename T>
+ostream &operator << ( ostream& out,XYVector<T> v){
+    out << "[";
+    for(int i = 0; i < v.get_size() - 1; i++)
+    {
+        out << v[i]<< ", ";
+    }
+    out << v[v.get_size() - 1 ] << "]";
+    return out;
+}
+
+
 template <class T>
 class XYVector{
 private:
@@ -54,7 +70,7 @@ public:
     void erase(Iterator);
     void erase(Iterator it1, Iterator it2);
     // friend
-     friend ostream &operator <<( ostream& out, XYVector<T>);
+    //friend ostream& operator <<  (ostream& out , XYVector<T> );
 
 };
 
@@ -63,23 +79,9 @@ public:
  * @brief the friend function
  * @param out from type of ostream
  * @param v  is an object from class XYVector
- * @return ostream 
+ * @return ostream
  * @details print the data of the object
  **/
-
-// friend method
-template<class T>
-typename::ostream & operator<< (ostream &out, XYVector<T> v) {
-    out << "your size is: " << v.get_size() << std::endl;
-    out << "your capacity is: " << v.get_capacity() << std::endl;
-    out << "your data is: [" << std::endl;
-    for(int i = 0; i < v.get_size(); i++)
-    {
-        out << v.data[i] << std::endl;
-    }
-    cout <<"}" <<endl;
-    return out;
-}
 
 
 // constructors
@@ -98,7 +100,7 @@ XYVector<T>::XYVector() : size{0} , capacity{5}
 
 /**
  * @brief this is the second constructor
- * @param soize 
+ * @param soize
  * @details define size = 0 and capacity with the paramter soize and allocated new memory and heap and initializing it with nothing
  */
 // constructor passing size
@@ -120,8 +122,8 @@ XYVector<T>:: XYVector(int soize) : size{0} , capacity{soize} {
 
 /**
  * @brief this is the third constructor
- * @param t 
- * @param n 
+ * @param t
+ * @param n
  * @details fill in the private member variable data with the vector that in parameter
  */
 template <class T>
@@ -149,8 +151,8 @@ XYVector<T>:: ~XYVector(){
 
 /**
  * @brief constructor used to define a new allocated memory and put the data inside it.
- * @param vec 
- * @return template <class T> 
+ * @param vec
+ * @return template <class T>
  */
 // Copy assignment
 template <class T>
@@ -164,8 +166,8 @@ XYVector<T>:: XYVector(const XYVector &vec) : size{vec.size} , capacity{vec.capa
 
 /**
  * @brief this is an operator overloading for []
- * @param element 
- * @return template<class T>& 
+ * @param element
+ * @return template<class T>&
  */
 template<class T>
 T & XYVector<T>::operator[](int element){
@@ -177,9 +179,9 @@ T & XYVector<T>::operator[](int element){
 
 
 /**
- * @brief this is overloading for = operator 
- * @param copy 
- * @return XYVector<T>& 
+ * @brief this is overloading for = operator
+ * @param copy
+ * @return XYVector<T>&
  */
 template<class T>
 XYVector<T> & XYVector<T>::operator = (const XYVector &copy){
@@ -194,8 +196,8 @@ XYVector<T> & XYVector<T>::operator = (const XYVector &copy){
 
 /**
  * @brief this is the move assignment
- * @param move 
- * @return XYVector<T>& 
+ * @param move
+ * @return XYVector<T>&
  */
 template<class T>
 XYVector<T> & XYVector<T>:: operator = (XYVector && move) noexcept{
@@ -214,7 +216,7 @@ XYVector<T> & XYVector<T>:: operator = (XYVector && move) noexcept{
 
 /**
  * @brief this is overloading for operator ==
- * @param vec 
+ * @param vec
  * @return true & flase
  * @details this used to compare between size and each item inside array in each object
  */
@@ -233,7 +235,7 @@ bool XYVector<T>::operator==(const XYVector<T> & vec) {
 
 /**
  * @brief operator < overloading
- * @param vec 
+ * @param vec
  * @return true & false
  * @details used to compate each item inside array
  */
@@ -250,7 +252,7 @@ bool XYVector<T>::operator < (const XYVector<T> &vec) {
 
 /**
  * @brief operator > overloading
- * @param vec 
+ * @param vec
  * @return true & false
  * @details used to compate each item inside array
  */
@@ -266,7 +268,7 @@ bool XYVector<T>::operator >(const XYVector<T> &vec) {
 
 /**
  * @brief dealing with iterators
- * @return XYVector<T>::Iterator 
+ * @return XYVector<T>::Iterator
  * @details used to return pointer that point in first element in array
  */
 template<class T>
@@ -277,7 +279,7 @@ typename XYVector<T>::Iterator XYVector<T>::begin() {
 
 /**
  * @brief dealing with iterators
- * @return XYVector<T>::Iterator 
+ * @return XYVector<T>::Iterator
  * @details used to return pointer that point in last element in array
  */
 template<class T>
@@ -288,7 +290,7 @@ typename XYVector<T>::Iterator XYVector<T>::end() {
 
 /**
  * @brief erase function
- * @param m 
+ * @param m
  * @details used to delete the item that the iterator point to it.
  */
 template<class T>
@@ -308,9 +310,9 @@ void XYVector<T>::erase(Iterator m) {
 
 /**
  * @brief erase function with 2 iterator
- * 
- * @param itr1 
- * @param itr2 
+ *
+ * @param itr1
+ * @param itr2
  * @details used to delete the item between two iterators
  */
 template <class T>
@@ -341,7 +343,7 @@ void XYVector<T>::erase(Iterator itr1, Iterator itr2)
 
 /**
  * @brief push back function
- * @param element 
+ * @param element
  * @return void
  * @details used to put element inside the vector
  */
@@ -392,7 +394,7 @@ void XYVector<T>::pop_back() {
 
 /**
  * @brief resize function
- * @return int 
+ * @return int
  * @details used to allocated a bigger memory
  */
 template<class T>
@@ -424,7 +426,7 @@ void XYVector<T>::print(){
 
 /**
  * @brief get size function
- * @return int 
+ * @return int
  * @details return size of vector
  */
 template<class T>
@@ -435,7 +437,7 @@ int XYVector<T>::get_size() const {
 
 /**
  * @brief get capacity function
- * @return int 
+ * @return int
  * @details return capacity of vector
  */
 template<class T>
@@ -457,7 +459,6 @@ void XYVector<T>::clear(){
         data[i] = NULL;
     }
 }
-
 
 
 
