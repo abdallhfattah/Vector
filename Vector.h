@@ -48,19 +48,19 @@ public:
     void erase(Iterator);
     void erase(Iterator it1, Iterator it2);
     // friend
-    // friend std::ostream & operator << (std:: ostream& out, XYVector<T>);
+     friend ostream &operator <<( ostream& out, XYVector<T>);
 
 };
 
 // friend method
 template<class T>
-std::ostream & operator << (std::ostream &out, XYVector<T> & v) {
-    std::cout << "your size is: " << v.get_size() << std::endl;
-    std::cout << "your capacity is: " << v.get_capacity() << std::endl;
-    std::cout << "your data is: [" << std::endl;
+ostream & operator << (ostream &out, XYVector<T> & v) {
+    out << "your size is: " << v.get_size() << std::endl;
+    out << "your capacity is: " << v.get_capacity() << std::endl;
+    out << "your data is: [" << std::endl;
     for(int i = 0; i < v.get_size(); i++)
     {
-        std::cout << v.data[i] << std::endl;
+        out << v.data[i] << std::endl;
     }
 }
 
