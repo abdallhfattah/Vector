@@ -60,6 +60,13 @@ public:
 
 };
 
+/**
+ * @brief the friend function
+ * @param out from type of ostream
+ * @param v  is an object from class XYVector
+ * @return ostream
+ * @details print the data of the object
+ **/
 template<class name>
 ostream &operator << (ostream &out, XYVector<name> & v) {
     out << "Vector size :" << v.size << endl;
@@ -73,14 +80,6 @@ ostream &operator << (ostream &out, XYVector<name> & v) {
     out << v[v.get_size() - 1 ] << "]";
     return out;
 }
-
-/**
- * @brief the friend function
- * @param out from type of ostream
- * @param v  is an object from class XYVector
- * @return ostream
- * @details print the data of the object
- **/
 
 
 // constructors
